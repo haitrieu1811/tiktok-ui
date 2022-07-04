@@ -13,6 +13,10 @@
     padding-bottom: 8px;
 }
 
+.menu-body {
+    overflow-y: auto;
+}
+
 // Menu item
 .menu-item {
     justify-content: flex-start;
@@ -37,6 +41,7 @@
     width: 100%;
     height: 50px;
     margin-top: -8px;
+    flex-shrink: 0;
     cursor: pointer;
 }
 .back-btn {
