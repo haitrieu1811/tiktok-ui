@@ -4,12 +4,12 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 
+import * as searchServices from '~/apiServices/searchServices';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon, XmarkIcon } from '~/components/Icons';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { useDebounce } from '~/hook';
 import styles from './Search.module.scss';
-import * as searchServices from '~/apiServices/searchServices';
 
 const cx = classNames.bind(styles);
 
@@ -51,6 +51,14 @@ function Search() {
         setShowResult(false);
     };
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
     return (
         <HeadlessTippy
             visible={searchResult.length > 0 && showRessult}
@@ -71,7 +79,7 @@ function Search() {
                 <input
                     ref={searchRef}
                     value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
@@ -80,8 +88,8 @@ function Search() {
                     {searchValue && !loading && <XmarkIcon width="1.467rem" height="1.467rem" />}
                 </button>
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-                <button className={cx('search-btn')}>
-                    <SearchIcon width="2.4rem" height="2.4rem" />{' '}
+                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+                    <SearchIcon width="2.4rem" height="2.4rem" />
                 </button>
             </div>
         </HeadlessTippy>

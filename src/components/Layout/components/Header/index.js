@@ -1,24 +1,28 @@
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-import {
-    faArrowRightFromBracket,
-    faCircleQuestion,
-    faCoins,
-    faEarthAsia,
-    faEllipsisVertical,
-    faGear,
-    faKeyboard,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import 'tippy.js/dist/tippy.css';
 
 import images from '~/assets/images';
 import Button from '~/components/Button';
-import { InboxIcon, MessageIcon, PlusIcon } from '~/components/Icons';
+import {
+    CoinIcon,
+    InboxIcon,
+    KeyboardIcon,
+    LanguageIcon,
+    LogoutIcon,
+    MessageIcon,
+    PlusIcon,
+    QuestionIcon,
+    SettingIcon,
+    UserIcon,
+} from '~/components/Icons';
 import Image from '~/components/Image';
 import Menu from '~/components/Popper/Menu';
+import routesConfig from '~/config/routes';
 import Search from '../Search';
 import styles from './Header.module.scss';
 
@@ -26,7 +30,7 @@ const cx = classNames.bind(styles);
 
 let MENU_ITEM = [
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        icon: <LanguageIcon width="2rem" height="2rem" />,
         title: 'English',
         children: {
             title: 'Language',
@@ -60,12 +64,12 @@ let MENU_ITEM = [
         },
     },
     {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        icon: <QuestionIcon width="2rem" height="2rem" />,
         title: 'Feedback and help',
         to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        icon: <KeyboardIcon width="2rem" height="2rem" />,
         title: 'Keyboard shortcuts',
     },
 ];
@@ -75,23 +79,23 @@ function Header() {
     const currentUser = true;
     const userMenu = [
         {
-            icon: <FontAwesomeIcon icon={faUser} />,
+            icon: <UserIcon width="2rem" height="2rem" />,
             title: 'View profile',
             to: '/@hoaa',
         },
         {
-            icon: <FontAwesomeIcon icon={faCoins} />,
+            icon: <CoinIcon width="2rem" height="2rem" />,
             title: 'Get coins',
             to: '/coin',
         },
         {
-            icon: <FontAwesomeIcon icon={faGear} />,
+            icon: <SettingIcon width="2rem" height="2rem" />,
             title: 'Settings',
             to: '/settings',
         },
         ...MENU_ITEM,
         {
-            icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
+            icon: <LogoutIcon width="2rem" height="2rem" />,
             title: 'Log out',
             to: 'logout',
             separate: true,
@@ -107,7 +111,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="tikkok" />
+                    <Link to={routesConfig.home} className={cx('logo-link')}>
+                        <img src={images.logo} alt="tikkok" />
+                    </Link>
                 </div>
 
                 <Search />

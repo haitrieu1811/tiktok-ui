@@ -9,9 +9,7 @@ import Header from './Header';
 
 const cx = classNames.bind(styles);
 
-const defaultFnc = () => {};
-
-function Menu({ children, items = [], onChange = defaultFnc }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = () => {} }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
 
@@ -37,6 +35,7 @@ function Menu({ children, items = [], onChange = defaultFnc }) {
 
     return (
         <Tippy
+            hideOnClick={hideOnClick}
             placement="bottom-end"
             delay={[0, 700]}
             interactive
