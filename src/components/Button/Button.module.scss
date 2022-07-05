@@ -1,6 +1,6 @@
 .wrapper {
     min-width: 100px;
-    padding: 5px 14px;
+    padding: 8px 14px;
     font-weight: 600;
     font-size: 1.6rem;
     border-radius: 4px;
@@ -26,9 +26,9 @@
 }
 
 .icon {
-    display: inline-block;
+    display: flex;
     text-align: center;
-    width: 24px;
+    width: 18px;
 }
 
 .icon + .title,

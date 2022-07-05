@@ -24,7 +24,7 @@ import {
 } from '~/components/Icons';
 import Image from '~/components/Image';
 import Menu from '~/components/Popper/Menu';
-import Search from '../Search';
+import { Search } from '~/layouts/components/Search';
 import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
