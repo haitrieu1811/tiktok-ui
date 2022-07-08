@@ -2,4 +2,6 @@
     width: 348px;
     padding: 20px 0 26px 8px;
     margin-left: -2.1rem;
+    position: sticky;
+    top: var(--default-layout-header-height);
 }

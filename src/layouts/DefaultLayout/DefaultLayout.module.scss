@@ -10,6 +10,7 @@
     margin-top: var(--default-layout-header-height);
     padding: 0 var(--default-layout-horizontal-spacer);
     display: flex;
+    align-items: flex-start;
 }
 .content {
     flex: 1;

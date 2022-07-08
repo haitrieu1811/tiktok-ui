@@ -1,12 +1,20 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import AccountItem from './AccountItem';
+import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-function Account({ headingTitle, data, viewOther }) {
+import AccountItem from './AccountItem';
+import styles from './Account.module.scss';
+
+const cx = classNames.bind(styles);
+
+function Account({ headingTitle, data, viewOption, loading }) {
     return (
         <>
-            <div>
-                <h4>{headingTitle}</h4>
+            <div className={cx('wrapper')}>
+                <h4 className={cx('heading')}>{headingTitle}</h4>
+                {loading && <FontAwesomeIcon icon={faSpinner} className={cx('loading')} />}
                 {data.map((result) => (
                     <AccountItem
                         key={result.id}
@@ -15,7 +23,11 @@ function Account({ headingTitle, data, viewOther }) {
                         username={result.nickname}
                     />
                 ))}
-                {viewOther && <Link to="/see-all">viewOther</Link>}
+                {viewOption && !loading && (
+                    <Link to="/see-all" className={cx('view-option')}>
+                        {viewOption}
+                    </Link>
+                )}
             </div>
         </>
     );

@@ -11,12 +11,14 @@ import Account from './Account';
 const cx = classNames.bind(styles);
 
 function Sidebar() {
-    // Data user
     const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        axios.get('https://tiktok.fullstack.edu.vn/api/users/search?q=h').then((res) => {
+        setLoading(true);
+        axios.get('https://tiktok.fullstack.edu.vn/api/users/search?q=n').then((res) => {
             setUsers(res.data.data);
+            setLoading(false);
         });
     }, []);
     // End data user
@@ -33,8 +35,8 @@ function Sidebar() {
                 />
                 <MenuItem title="LIVE" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
             </Menu>
-            <Account headingTitle="Suggested accounts" data={users} viewOther="See all" />
-            <Account headingTitle="Following accounts" data={users} viewOther="See more" />
+            <Account headingTitle="Suggested accounts" data={users} viewOption="See all" loading={loading} />
+            <Account headingTitle="Following accounts" data={users} viewOption="See more" loading={loading} />
         </aside>
     );
 }

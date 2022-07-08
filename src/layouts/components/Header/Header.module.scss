@@ -60,11 +60,16 @@
         position: absolute;
         top: -5px;
         right: -5px;
-        background: #d63031;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--primary);
         color: #fff;
         font-size: 1.2rem;
-        border-radius: 99px;
-        padding: 3px 5px;
+        font-weight: 600;
+        border-radius: 10px;
         pointer-events: none;
     }
 }

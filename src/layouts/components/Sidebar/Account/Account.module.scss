@@ -1,0 +1,75 @@
+.wrapper {
+    padding: 16px 0;
+    color: rgba(22, 24, 35, 0.75);
+    border-top: 1px solid #edefef;
+}
+
+.heading {
+    padding: 0 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    max-height: 48px;
+    border-radius: 4px;
+    transition: background 200ms ease-in-out 0s;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 12px;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .username {
+        color: rgb(22, 24, 35);
+        font-family: 'SofiaPro', sans-serif;
+        font-weight: 700;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        white-space: nowrap;
+    }
+
+    .fullname {
+        color: rgba(22, 24, 35, 0.75);
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.5rem;
+        white-space: nowrap;
+    }
+}
+
+.view-option {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.loading {
+    animation: spinner 0.8s linear infinite;
+    margin: 8px;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
