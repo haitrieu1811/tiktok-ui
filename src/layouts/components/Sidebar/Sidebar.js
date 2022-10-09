@@ -7,6 +7,7 @@ import Menu, { MenuItem } from '~/layouts/components/Sidebar/Menu';
 import config from '~/config';
 import { HomeIcon, UsersIcon, LiveIcon, HomeActiveIcon, UsersActiveIcon, LiveActiveIcon } from '~/components/Icons';
 import Account from './Account';
+import SuggestedAccounts from '~/components/SuggestedAccounts';
 
 const cx = classNames.bind(styles);
 
@@ -35,8 +36,12 @@ function Sidebar() {
                 />
                 <MenuItem title="LIVE" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
             </Menu>
-            <Account headingTitle="Suggested accounts" data={users} viewOption="See all" loading={loading} />
-            <Account headingTitle="Following accounts" data={users} viewOption="See more" loading={loading} />
+
+            {/* <Account headingTitle="Suggested accounts" data={users} viewOption="See all" loading={loading} />
+            <Account headingTitle="Following accounts" data={users} viewOption="See more" loading={loading} /> */}
+
+            <SuggestedAccounts label="Suggested accounts" />
+            <SuggestedAccounts label="Following accounts" />
         </aside>
     );
 }
